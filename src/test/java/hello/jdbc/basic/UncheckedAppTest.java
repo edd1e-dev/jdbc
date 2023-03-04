@@ -7,6 +7,9 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class UncheckedAppTest {
 
 	@Test
@@ -14,6 +17,17 @@ public class UncheckedAppTest {
 		Controller controller = new Controller();
 		assertThatThrownBy(() -> controller.request())
 			.isInstanceOf(RuntimeSQLException.class);
+	}
+
+	@Test
+	void printEx() {
+		Controller controller = new Controller();
+		try {
+			controller.request();
+		} catch (Exception e) {
+			// e.printStackTrace(); 를 해도 되지만 좋지 않음
+			log.info("ex", e);
+		}
 	}
 
 	static class Controller {
