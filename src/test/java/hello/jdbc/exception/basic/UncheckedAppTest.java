@@ -1,4 +1,4 @@
-package hello.jdbc.basic;
+package hello.jdbc.exception.basic;
 
 import static org.assertj.core.api.Assertions.*;
 
